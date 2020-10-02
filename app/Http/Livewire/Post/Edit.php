@@ -31,13 +31,25 @@ class Edit extends Component
     }
 
     /**
+     * Real-time Validation
+     */
+
+    public function updated($field)
+    {
+        $this->validateOnly($field, [
+            'title'   => 'min:6',
+            'content' => 'required|min:25',
+        ]);
+    }
+
+    /**
      * update function
      */
     public function update()
     {
         $this->validate([
-            'title'   => 'required',
-            'content' => 'required',
+            'title'   => 'min:6',
+            'content' => 'required|min:25',
         ]);
 
         if($this->postId) {
