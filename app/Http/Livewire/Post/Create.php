@@ -15,13 +15,25 @@ class Create extends Component
     public $content;
 
     /**
+     * Real-time Validation
+     */
+
+    public function updated($field)
+    {
+        $this->validateOnly($field, [
+            'title'   => 'min:6',
+            'content' => 'required|min:25',
+        ]);
+    }
+
+    /**
      * store function
      */
     public function store()
     {
         $this->validate([
-            'title'   => 'required',
-            'content' => 'required',
+            'title'   => 'min:6',
+            'content' => 'required|min:25',
         ]);
 
         $post = Post::create([
