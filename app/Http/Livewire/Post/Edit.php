@@ -19,10 +19,8 @@ class Edit extends Component
     /**
      * mount or construct function
      */
-    public function mount($id)
-    {
-        $post = Post::find($id);
-        
+    public function mount(Post $post)
+    {   
         if($post) {
             $this->postId   = $post->id;
             $this->title    = $post->title;
